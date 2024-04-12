@@ -2,7 +2,7 @@ ELECTRUM_VERSION = $(strip $(shell cat VERSION))
 ELECTRUM_CHECKSUM_SHA512 = $(strip $(shell cat CHECKSUM_SHA512))
 GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
 
-DOCKER_IMAGE ?= osminogin/electrum-daemon
+DOCKER_IMAGE ?= ofumbi/electrum-daemon
 DOCKER_TAG = $(ELECTRUM_VERSION)
 
 # Build Docker image
