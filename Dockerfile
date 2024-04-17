@@ -22,7 +22,7 @@ LABEL maintainer="osintsev@gmail.com" \
 
 ENV ELECTRUM_VERSION $VERSION
 ENV ELECTRUM_USER electrum
-ENV ELECTRUM_PASSWORD electrumz		# XXX: CHANGE REQUIRED!
+ENV ELECTRUM_PASSWORD electrumz
 ENV ELECTRUM_HOME /home/$ELECTRUM_USER
 ENV ELECTRUM_NETWORK mainnet
 
@@ -36,8 +36,11 @@ RUN mkdir -p /data ${ELECTRUM_HOME} && \
 ENV ELECTRUM_CHECKSUM_SHA512 $CHECKSUM_SHA512
 
 RUN adduser -D $ELECTRUM_USER 
-
- RUN apk --no-cache add --virtual build-dependencies gpg dirmngr gpg-agent gcc musl-dev libsecp256k1 libsecp256k1-dev libressl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev  && \
+RUN apk update &&\
+    apk --no-cache add --upgrade libsecp256k1
+#RUN apk --no-cache add --virtual build-dependencies gpg dirmngr gpg-agent gcc musl-dev libsecp256k1 libsecp256k1-dev libressl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev  && \
+RUN apk update &&\
+    apk --no-cache add --upgrade --virtual build-dependencies gpg dirmngr gpg-agent gcc musl-dev libressl-dev  libffi-dev  && \
     wget https://download.electrum.org/${ELECTRUM_VERSION}/Electrum-${ELECTRUM_VERSION}.tar.gz && \
     wget https://download.electrum.org/${ELECTRUM_VERSION}/Electrum-${ELECTRUM_VERSION}.tar.gz.asc && \
     gpg --keyserver keys.gnupg.net --recv-keys 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6 && \
@@ -47,7 +50,7 @@ RUN adduser -D $ELECTRUM_USER
     pip3 install cryptography pycryptodomex Electrum-${ELECTRUM_VERSION}.tar.gz && \
     rm -f Electrum-${ELECTRUM_VERSION}.tar.gz && \
     apk del build-dependencies 
-
+RUN cp /usr/lib/libsecp256k1.so.0 /usr/local/lib/python3.9/site-packages/electrum
 RUN mkdir -p /data \
 	    ${ELECTRUM_HOME}/.electrum/wallets/ \
 	    ${ELECTRUM_HOME}/.electrum/testnet/wallets/ \
