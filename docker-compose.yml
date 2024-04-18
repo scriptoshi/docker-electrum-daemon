@@ -11,6 +11,6 @@ services:
             - ELECTRUM_NETWORK=testnet
             - ELECTRUM_VERSION=4.2.1
         container_name: electrum
-        image: ofumbi/electrum-daemon
+        image: zambaizo/electrum-daemon
         volumes:
             - ../electrum:/data

@@ -13,11 +13,11 @@ LABEL maintainer="osintsev@gmail.com" \
 	org.label-schema.description="Electrum wallet with JSON-RPC enabled (daemon mode)" \
 	org.label-schema.version=$VERSION \
 	org.label-schema.vcs-ref=$VCS_REF \
-	org.label-schema.vcs-url="https://github.com/ofumbi/docker-electrum-daemon" \
-	org.label-schema.usage="https://github.com/ofumbi/docker-electrum-daemon#getting-started" \
+	org.label-schema.vcs-url="https://github.com/zambaizo/docker-electrum-daemon" \
+	org.label-schema.usage="https://github.com/zambaizo/docker-electrum-daemon#getting-started" \
 	org.label-schema.license="MIT" \
 	org.label-schema.url="https://electrum.org" \
-	org.label-schema.docker.cmd='docker run -d --name electrum-daemon --publish 127.0.0.1:7000:7000 --volume /srv/electrum:/data ofumbi/electrum-daemon' \
+	org.label-schema.docker.cmd='docker run -d --name electrum-daemon --publish 127.0.0.1:7000:7000 --volume /srv/electrum:/data zambaizo/electrum-daemon' \
 	org.label-schema.schema-version="1.0"
 
 ENV ELECTRUM_VERSION $VERSION

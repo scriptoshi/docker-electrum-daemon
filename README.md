@@ -1,6 +1,6 @@
 # docker-electrum-daemon
 
-[![](https://images.microbadger.com/badges/version/ofumbi/electrum-daemon.svg)](https://microbadger.com/images/ofumbi/electrum-daemon) [![](https://img.shields.io/docker/build/ofumbi/electrum-daemon.svg)](https://hub.docker.com/r/ofumbi/electrum-daemon/builds/) [![](https://images.microbadger.com/badges/commit/ofumbi/electrum-daemon.svg)](https://microbadger.com/images/ofumbi/electrum-daemon) [![](https://img.shields.io/docker/stars/ofumbi/electrum-daemon.svg)](https://hub.docker.com/r/ofumbi/electrum-daemon) [![](https://images.microbadger.com/badges/image/ofumbi/electrum-daemon.svg)](https://microbadger.com/images/ofumbi/electrum-daemon) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![](https://images.microbadger.com/badges/version/zambaizo/electrum-daemon.svg)](https://microbadger.com/images/zambaizo/electrum-daemon) [![](https://img.shields.io/docker/build/zambaizo/electrum-daemon.svg)](https://hub.docker.com/r/zambaizo/electrum-daemon/builds/) [![](https://images.microbadger.com/badges/commit/zambaizo/electrum-daemon.svg)](https://microbadger.com/images/zambaizo/electrum-daemon) [![](https://img.shields.io/docker/stars/zambaizo/electrum-daemon.svg)](https://hub.docker.com/r/zambaizo/electrum-daemon) [![](https://images.microbadger.com/badges/image/zambaizo/electrum-daemon.svg)](https://microbadger.com/images/zambaizo/electrum-daemon) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
 
 **Electrum client running as a daemon in docker container with JSON-RPC enabled.**
 
@@ -8,7 +8,7 @@
 
 Don't confuse with [Electrum server](https://github.com/spesmilo/electrum-server) that use bitcoind and full blockchain data.
 
-Star this project on Docker Hub :star2: https://hub.docker.com/r/ofumbi/electrum-daemon/
+Star this project on Docker Hub :star2: https://hub.docker.com/r/zambaizo/electrum-daemon/
 
 ### Ports
 
@@ -29,7 +29,7 @@ docker run --rm --name electrum \
     --env TESTNET=false \
     --publish 127.0.0.1:7000:7000 \
     --volume /srv/electrum:/data \
-    ofumbi/electrum-daemon
+    zambaizo/electrum-daemon
 ```
 
 ```bash
@@ -54,7 +54,7 @@ docker exec -it electrum-daemon electrum daemon status
 
 #### docker-compose
 
-[docker-compose.yml](https://github.com/ofumbi/docker-electrum-daemon/blob/master/docker-compose.yml) to see minimal working setup. When running in production, you can use this as a guide.
+[docker-compose.yml](https://github.com/zambaizo/docker-electrum-daemon/blob/master/docker-compose.yml) to see minimal working setup. When running in production, you can use this as a guide.
 
 ```bash
 docker-compose up
@@ -75,4 +75,4 @@ Always link electrum daemon to containers or bind to localhost directly and not 
 
 ## License
 
-See [LICENSE](https://github.com/ofumbi/docker-electrum-daemon/blob/master/LICENSE)
+See [LICENSE](https://github.com/zambaizo/docker-electrum-daemon/blob/master/LICENSE)
