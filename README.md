@@ -92,7 +92,7 @@ This repository is configured with GitHub Actions to automatically build and pub
 
 ### How It Works
 
-1. Create a new release in your GitHub repository
+1. Create a new tag in your GitHub repository (e.g., `git tag v1.0.0` and `git push --tags`)
 2. The GitHub Actions workflow will automatically:
     - Build the Docker image
     - Tag it with the release version and 'latest'
