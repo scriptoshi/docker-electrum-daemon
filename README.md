@@ -64,6 +64,19 @@ docker-compose exec electrum electrum daemon load_wallet
 curl --data-binary '{"id":"1","method":"listaddresses"}' http://electrum:electrumz@localhost:7000
 ```
 
+#### Security Note
+
+For production use, it's recommended to provide the `ELECTRUM_PASSWORD` as an environment variable at runtime rather than relying on the default value:
+
+```bash
+docker run --rm --name electrum \
+    --env ELECTRUM_NETWORK=mainnet \
+    --env ELECTRUM_PASSWORD=your_secure_password \
+    --publish 127.0.0.1:7000:7000 \
+    --volume /srv/electrum:/data \
+    scriptoshi/electrum-daemon
+```
+
 :exclamation:**Warning**:exclamation:
 
 Always link electrum daemon to containers or bind to localhost directly and not expose 7000 port for security reasons.

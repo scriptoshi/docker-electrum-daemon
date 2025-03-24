@@ -19,11 +19,13 @@ LABEL maintainer="scriptoshi.com@gmail.com" \
 	org.label-schema.docker.cmd='docker run -d --name electrum-daemon --publish 127.0.0.1:7000:7000 --volume /srv/electrum:/data scriptoshi/electrum-daemon' \
 	org.label-schema.schema-version="1.0"
 
-ENV ELECTRUM_VERSION $VERSION
-ENV ELECTRUM_USER electrum
-ENV ELECTRUM_PASSWORD electrumz
-ENV ELECTRUM_HOME /home/$ELECTRUM_USER
-ENV ELECTRUM_NETWORK mainnet
+ENV ELECTRUM_VERSION=$VERSION \
+    ELECTRUM_USER=electrum \
+    ELECTRUM_HOME=/home/electrum \
+    ELECTRUM_NETWORK=mainnet
+
+# Default password - consider using docker secrets or runtime environment variables instead
+ENV ELECTRUM_PASSWORD=electrumz
 
 RUN  echo -e "ELECTRUM_VERSION: $VERSION "
 
