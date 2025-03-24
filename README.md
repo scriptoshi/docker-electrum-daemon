@@ -1,6 +1,6 @@
 # docker-electrum-daemon
 
-[![](https://images.microbadger.com/badges/version/zambaizo/electrum-daemon.svg)](https://microbadger.com/images/zambaizo/electrum-daemon) [![](https://img.shields.io/docker/build/zambaizo/electrum-daemon.svg)](https://hub.docker.com/r/zambaizo/electrum-daemon/builds/) [![](https://images.microbadger.com/badges/commit/zambaizo/electrum-daemon.svg)](https://microbadger.com/images/zambaizo/electrum-daemon) [![](https://img.shields.io/docker/stars/zambaizo/electrum-daemon.svg)](https://hub.docker.com/r/zambaizo/electrum-daemon) [![](https://images.microbadger.com/badges/image/zambaizo/electrum-daemon.svg)](https://microbadger.com/images/zambaizo/electrum-daemon) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![](https://images.microbadger.com/badges/version/scriptoshi/electrum-daemon.svg)](https://microbadger.com/images/scriptoshi/electrum-daemon) [![](https://img.shields.io/docker/build/scriptoshi/electrum-daemon.svg)](https://hub.docker.com/r/scriptoshi/electrum-daemon/builds/) [![](https://images.microbadger.com/badges/commit/scriptoshi/electrum-daemon.svg)](https://microbadger.com/images/scriptoshi/electrum-daemon) [![](https://img.shields.io/docker/stars/scriptoshi/electrum-daemon.svg)](https://hub.docker.com/r/scriptoshi/electrum-daemon) [![](https://images.microbadger.com/badges/image/scriptoshi/electrum-daemon.svg)](https://microbadger.com/images/scriptoshi/electrum-daemon) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
 
 **Electrum client running as a daemon in docker container with JSON-RPC enabled.**
 
@@ -8,7 +8,7 @@
 
 Don't confuse with [Electrum server](https://github.com/spesmilo/electrum-server) that use bitcoind and full blockchain data.
 
-Star this project on Docker Hub :star2: https://hub.docker.com/r/zambaizo/electrum-daemon/
+Star this project on Docker Hub :star2: https://hub.docker.com/r/scriptoshi/electrum-daemon/
 
 ### Ports
 
@@ -29,7 +29,7 @@ docker run --rm --name electrum \
     --env TESTNET=false \
     --publish 127.0.0.1:7000:7000 \
     --volume /srv/electrum:/data \
-    zambaizo/electrum-daemon
+    scriptoshi/electrum-daemon
 ```
 
 ```bash
@@ -54,7 +54,7 @@ docker exec -it electrum-daemon electrum daemon status
 
 #### docker-compose
 
-[docker-compose.yml](https://github.com/zambaizo/docker-electrum-daemon/blob/master/docker-compose.yml) to see minimal working setup. When running in production, you can use this as a guide.
+[docker-compose.yml](https://github.com/scriptoshi/docker-electrum-daemon/blob/master/docker-compose.yml) to see minimal working setup. When running in production, you can use this as a guide.
 
 ```bash
 docker-compose up
@@ -73,6 +73,40 @@ Always link electrum daemon to containers or bind to localhost directly and not 
 -   [Electrum protocol specs](http://docs.electrum.org/en/latest/protocol.html)
 -   [API related sources](https://github.com/spesmilo/electrum/blob/master/lib/commands.py)
 
+## GitHub Actions Automation
+
+This repository is configured with GitHub Actions to automatically build and publish the Docker image to Docker Hub when a new release is created.
+
+### How It Works
+
+1. Create a new release in your GitHub repository
+2. The GitHub Actions workflow will automatically:
+    - Build the Docker image
+    - Tag it with the release version and 'latest'
+    - Push it to Docker Hub under `scriptoshi/electrum-daemon`
+
+### Setup Requirements
+
+To use the GitHub Actions workflow, you need to configure the following in your GitHub repository:
+
+#### Repository Secrets
+
+1. Go to your repository on GitHub
+2. Navigate to Settings → Secrets and variables → Actions → Secrets
+3. Add the following repository secrets:
+   - `DOCKER_USERNAME`: Your Docker Hub username
+   - `DOCKER_TOKEN`: A Docker Hub access token (create one at https://hub.docker.com/settings/security)
+
+#### Repository Variables
+
+1. Go to Settings → Secrets and variables → Actions → Variables
+2. Add the following repository variable:
+   - `DOCKER_IMAGE`: The name of your Docker image (e.g., `scriptoshi/electrum-daemon`)
+
+If the `DOCKER_IMAGE` variable is not set, the workflow will default to `scriptoshi/electrum-daemon`.
+
+The workflow can also be manually triggered using the GitHub Actions interface.
+
 ## License
 
-See [LICENSE](https://github.com/zambaizo/docker-electrum-daemon/blob/master/LICENSE)
+See [LICENSE](https://github.com/scriptoshi/docker-electrum-daemon/blob/master/LICENSE)

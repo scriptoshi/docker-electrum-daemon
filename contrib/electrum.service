@@ -8,8 +8,8 @@ After=docker.service network.target
 TimeoutStartSec=5
 Restart=always
 RestartSec=20s
-ExecStartPre=/usr/bin/docker pull zambaizo/electrum-daemon
-ExecStart=/usr/bin/docker run --rm --name electrum -p 127.0.0.1:9000:9000 zambaizo/electrum-daemon
+ExecStartPre=/usr/bin/docker pull scriptoshi/electrum-daemon
+ExecStart=/usr/bin/docker run --rm --name electrum -p 127.0.0.1:9000:9000 scriptoshi/electrum-daemon
 ExecStop=/usr/bin/docker stop electrum
 
 [Install]

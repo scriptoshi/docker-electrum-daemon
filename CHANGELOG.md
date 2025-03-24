@@ -9,10 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   Added systemd unit for Electrum wallet service @zambaizo
+-   Added systemd unit for Electrum wallet service @scriptoshi
 -   Electrum version updated to 3.3.8 @chris54721
--   Python version bumped to 0.4.2.5 @zambaizo
--   Image metadata updated @zambaizo
+-   Python version bumped to 0.4.2.5 @scriptoshi
+-   Image metadata updated @scriptoshi
 -   Fix image build @theborakompanioni
 
 ### Added
